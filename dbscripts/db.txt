@@ -1,0 +1,58 @@
+CREATE USER 'testuser'@'localhost' IDENTIFIED BY 'testpassword';
+GRANT ALL PRIVILEGES ON * . * TO 'testuser'@'localhost';
+
+CREATE TABLE item
+(
+itemid int NOT NULL AUTO_INCREMENT,
+name varchar(255),
+description varchar(255),
+cost int,
+quantity int,
+sellerid int,
+PRIMARY KEY (itemid)
+);
+
+CREATE TABLE buyer
+(
+buyerid int NOT NULL AUTO_INCREMENT,
+firstname varchar(255),
+lastname varchar(255),
+email varchar(255),
+phone int,
+address varchar(255),
+PRIMARY KEY (buyerid)
+);
+
+CREATE TABLE seller
+(
+sellerid int NOT NULL AUTO_INCREMENT,
+name varchar(255),
+email varchar(255),
+phone int,
+address varchar(255),
+PRIMARY KEY (sellerid)
+);
+
+
+CREATE TABLE order
+(
+orderid int NOT NULL AUTO_INCREMENT,
+buyerid int,
+orderdate varchar(255),
+shippingdate varchar(255),
+ordercost int,
+status varchar(255),
+PRIMARY KEY (orderid)
+);
+
+CREATE TABLE orderdetails
+(
+orderdetailsid int NOT NULL AUTO_INCREMENT,
+orderid int,
+itemid int,
+itemquantity int,
+itemcost int,
+PRIMARY KEY (orderdetailsid)
+);
+
+
